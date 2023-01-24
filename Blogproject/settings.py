@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 3rd-part apps
-    "rest_framework",
-    
-    'accounts.apps.AccountsConfig',
+   # 3rd party
+   "rest_framework",
+   "corsheaders", # new
+
+    # Local
+    "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
 ]
 
@@ -62,6 +64,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# new
+CORS_ORIGIN_WHITELIST = (
+"http://localhost:3000",
+"http://localhost:8000",
+)
+
+# django_project/settings.py
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"] # new
+
 
 ROOT_URLCONF = 'Blogproject.urls'
 
