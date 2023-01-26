@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
    # 3rd party
    "rest_framework",
-   "corsheaders", # new
+    "corsheaders",
+    "rest_framework.authtoken", # new
 
     # Local
     "accounts.apps.AccountsConfig",
@@ -47,12 +48,17 @@ INSTALLED_APPS = [
 ]
 
 
-REST_FRAMEWORK = { # new
+REST_FRAMEWORK = {
 "DEFAULT_PERMISSION_CLASSES": [
 "rest_framework.permissions.IsAuthenticated",
-]
-}
+],
 
+"DEFAULT_AUTHENTICATION_CLASSES": [ # new
+"rest_framework.authentication.SessionAuthentication",
+# "rest_framework.authentication.BasicAuthentication",
+"rest_framework.authentication.TokenAuthentication", # new
+],
+}
 
 
 MIDDLEWARE = [
